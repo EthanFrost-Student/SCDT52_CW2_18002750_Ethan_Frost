@@ -6,7 +6,7 @@ require_once './inc/functions.php';
 foreach ($products as $product):
 ?>
 
-    <div class="col-4">
+    <div class="col-4 mt-5">
         <div class="card">
             <img src="<?= $product['image'] ?>" 
                 class="card-img-top" 

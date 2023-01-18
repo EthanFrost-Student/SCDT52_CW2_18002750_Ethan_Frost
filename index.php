@@ -11,26 +11,28 @@
     <h1 class="mb-2 mt-4 text-center">Looking for a set of flowers for a special someone?</h1>
   </div>
 
+
+  <section class="vh-200 text-center">
+      <div class="container py-5 h-75">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <?php require __DIR__ . "/components/products.php"; ?>
+        </div>
+      </div>
+  </section> 
+
+
+  <h1 class="text-center pt-4 mt-3">Reviews</h1>
+  <section class="vh-50 text-center">
+      <div class="container py-3 h-75">
+        <div class="row d-flex justify-content-center h-100">
+          <?php require __DIR__ . "/components/reviews.php"; ?>
+        </div>
+      </div>
+  </section> 
+
 </html>
 
 
-<section class="vh-100 text-center">
-    <div class="container py-5 h-75">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-         <?php require __DIR__ . "/components/products.php"; ?>
-      </div>
-    </div>
-</section>  
-
-
-
-<section class="vh-100 text-center">
-    <div class="container py-5 h-75">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-      <?php require __DIR__ . "/components/review-details.php"; ?>
-      </div>
-    </div>
-</section>
 
 <?php require __DIR__ . "/inc/footer.php"; ?>
 
