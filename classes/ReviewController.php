@@ -9,7 +9,7 @@ class ReviewController {
         $this->db = $db;
     }
 
-    public function get_review_by_id(int $id)
+    public function get_reviews_by_id(int $id)
     {
         $sql = "SELECT * FROM reviews WHERE id = :id";
         $args = ['id' => $id];
@@ -22,30 +22,20 @@ class ReviewController {
         return $this->db->runSQL($sql)->fetchAll();
     }
 
-    public function delete_review(int $id)
+    public function delete_reviews(int $id)
     {
         $sql = "DELETE FROM reviews WHERE id = :id";
         $args = ['id' => $id];
         return $this->db->runSQL($sql, $args)->execute();
     }
 
-    public function register_review(array $review)
+    public function create_reviews(array $reviews) 
     {
-        try {
-
-            $sql = "INSERT INTO reviews(username, comment)
-                    VALUES (:username, :comment)"; 
-
-            $this->db->runSQL($sql, $review)->execute();
-            return true;
-
-        } catch (PDOException $e) {
-
-            if ($e->getCode() == 23000) { //Could be 1062
-                return false;
-            }
-            throw $e;
-        }
+        
+        $sql = "INSERT INTO reviews(username, comment)
+        VALUES (:username, :comment);";
+        $this->db->runSQL($sql, $reviews);
+        return $this->db->lastInsertId();
     }   
 
 

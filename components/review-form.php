@@ -2,32 +2,32 @@
 require_once './inc/functions.php';
 
 $message = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : '';
-$email = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    $email = InputProcessor::processEmail($_POST['email']);
-    $password = InputProcessor::processPassword($_POST['password']);
+    $fname = InputProcessor::processString($_POST['fname']);
+    $comment = InputProcessor::processString($_POST['comment']);
 
-    $valid = $email['valid'] && $password['valid'];
+    $valid = $fname['valid'] && $comment['valid'];
 
-    if ($valid) {
-  
-      $member = $controllers->members()->login_member($email['value'], $password['value']);
+    if($valid) 
+    {
+      
+      $args = ['username' => $fname['value'] , 
+              'comment' => $comment['value']
+              ];
 
-      if (!$member) {
-        $message = "User details are incorrect.";
-     } else {
-         $_SESSION['user'] = $member; 
-         redirect('member');
+      $id = $controllers->reviews()->create_reviews($args);
+
+      if(!empty($id) && $id > 0) {
+        redirect('review', ['id' => $id]);
       }
-
+      else 
+      {
+        $message = "Error adding review."; //Change
+      }
     }
-    else {
-       $message =  "Please fix the above errors. ";
-   }
-
-} 
+}
 ?>
 
 <form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>">
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 </div>
   
               <div class="form-outline mb-4">
-                <input type="text" id="review_comment" name="comment" class="form-control form-control-lg" placeholder="Review Section" required value="<?= htmlspecialchars($fname['value'] ?? '') ?>"/>
+                <input type="text" id="review_comment" name="comment" class="form-control form-control-lg" placeholder="Review Section" required value="<?= htmlspecialchars($comment['value'] ?? '') ?>"/>
                   <span class="text-danger"><?= htmlspecialchars($fname['error'] ?? '') ?></span>
                 </div>
   
