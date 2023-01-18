@@ -5,7 +5,7 @@ $id = $_GET['id'] ?? '';
 
 if (!empty($id)) {
 
-    $product =$controllers->products()->get_product_by_id($id);
+    $product = $controllers->products()->get_product_by_id($id);
 
     if ($product): ?>
     
@@ -23,7 +23,9 @@ if (!empty($id)) {
      endif ?>
 
 <?php
-} else {
+} 
+else 
+{
     redirect("not-found"); //404 file not found
 }
 ?>

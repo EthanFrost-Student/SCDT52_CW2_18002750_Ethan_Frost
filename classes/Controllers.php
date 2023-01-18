@@ -52,8 +52,9 @@ class Controllers {
     public function reviews()
     {
         if ($this->reviews === null) {
-            $this->reviews = new ProductController($this->db);
+            $this->reviews = new ReviewController($this->db);
         }
-        return $this->reviews();
+        return $this->reviews;
     }
+
 }
