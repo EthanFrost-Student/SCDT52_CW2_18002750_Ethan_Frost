@@ -1,5 +1,5 @@
 <?php require __DIR__ . "/inc/header.php"; ?>
-     
+
 
 <html>
 
@@ -11,9 +11,16 @@
     <h1 class="mb-2 mt-4 text-center">Looking for a set of flowers for a special someone?</h1>
   </div>
 
+  <div class="container-fluid ms-4 mt-5 p-1">
+    <form action="/search" method="get">
+      <input type="text" name="text" placeholder="Search our products...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
 
   <section class="vh-200 text-center">
-      <div class="container py-5 h-75">
+      <div class="container py-2 h-75">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <?php require __DIR__ . "/components/products.php"; ?>
         </div>
