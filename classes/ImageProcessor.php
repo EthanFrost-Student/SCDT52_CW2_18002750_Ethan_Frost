@@ -20,14 +20,6 @@ class ImageProcessor {
             throw new Exception('The uploaded image has an invalid extension.');
         }
 
-        // Check if the MIME type of the file matches the extension
-        $finfo = new finfo(FILEINFO_MIME_TYPE);
-        $mime = $finfo->file($image['tmp_name']);
-        if (strpos($mime, $ext) === false) 
-        {
-            throw new Exception('The MIME type of the uploaded image does not match the extension.');
-        }
-
         // Ensure that the destination directory exists and is writable
         if (!is_dir($directory)) {
             throw new Exception('The destination directory does not exist.');

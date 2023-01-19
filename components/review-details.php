@@ -22,8 +22,4 @@ if (!empty($id)) {
 
 <?php
 } 
-else 
-{
-    redirect("not-found"); //404 file not found
-}
 ?>
