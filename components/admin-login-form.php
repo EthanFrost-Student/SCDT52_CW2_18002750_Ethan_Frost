@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 </div>
   
               <div class="form-outline mb-4">
-                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password" required value=" <?= htmlspecialchars($password['value'] ?? '') ?> "/>
+                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password" required value="<?= htmlspecialchars($password['value'] ?? '')?>"/>
                   <span class="text-danger"><?= $password['error'] ?? '' ?></span>
                 </div>
   
